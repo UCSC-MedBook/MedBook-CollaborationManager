@@ -98,29 +98,9 @@ Meteor.startup(function() {
       };
     }
 
-    // push "collaboration" modules to postHeading
-    postHeading.push({
-      template: 'collaborationTagList',
-      order: 3
-    });
-  
     // push "collaborationMenu" template to primaryNav
     primaryNav.push('collaborationMenu');
 
-    // push "collaboration" property to addToPostSchema, so that it's later added to postSchema
-    /*
-       relocated to  toplevel/collections/posts.js because its hard to debug Javascript scope issues.
-
-    addToPostSchema.push(
-      {
-        propertyName: 'collaboration',
-        propertySchema: {
-          optional: true,
-          type: [String]
-        }
-      }
-    );
-    */
 });
 
 

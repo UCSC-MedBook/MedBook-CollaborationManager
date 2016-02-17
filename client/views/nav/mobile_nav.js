@@ -12,7 +12,7 @@ Template[getTemplate('mobile_nav')].helpers({
     return canPost(Meteor.user());
   },
   requirePostsApproval: function(){
-    return getSetting('requirePostsApproval');
+    return ""
   },
   userMenu: function () {
     return getTemplate('userMenu');

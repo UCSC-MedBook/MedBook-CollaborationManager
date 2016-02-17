@@ -50,10 +50,8 @@ telescope-i18n
 # Telescope Packages (Optional)
 
 telescope-theme-base
-telescope-search
 telescope-theme-hubble
 
-telescope-notifications
 
 # Accounts Templates
 useraccounts:unstyled

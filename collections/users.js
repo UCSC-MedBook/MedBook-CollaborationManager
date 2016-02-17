@@ -32,11 +32,6 @@ Schema.User = new SimpleSchema({
     optional: true,
     blackbox: true
   },
-  votes: { // used for votes only
-    type: Object,
-    optional: true,
-    blackbox: true
-  },
   services: {
     type: Object,
     optional: true,

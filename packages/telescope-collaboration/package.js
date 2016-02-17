@@ -5,7 +5,6 @@ Package.onUse(function (api) {
   api.use(['telescope-lib', 'telescope-base', 'aldeed:simple-schema', 'telescope-theme-hubble'], ['client', 'server']);
 
   api.use([
-    'telescope-post-files',
     'coffeescript',
     'jquery',
     'http',
@@ -18,16 +17,14 @@ Package.onUse(function (api) {
     'vsivsi:file-collection',
     'telescope-i18n',
     'pfafman:font-awesome-4',
+    
     // 'aldeed:autoform-select2@1.0.4',
     // 'yogiben:autoform-tags',
   ], 'client');
 
-  /*
-  // NEW i18n support
   api.use([
-    'tap:i18n'
+    'aldeed:autoform',
   ], ['client', 'server']);
-  */
 
   api.add_files(['lib/collaboration.js'], ['client', 'server']);
 
@@ -42,9 +39,6 @@ Package.onUse(function (api) {
     'lib/client/views/collaboration_item.js',
     'lib/client/views/collaboration_menu.html',
     'lib/client/views/collaboration_menu.js',
-    'lib/client/views/post_collaboration.html',
-    'lib/client/views/post_collaboration.css',
-    'lib/client/views/post_collaboration.js',
 
     'lib/client/views/select2.js',
     'lib/client/views/select2.css',

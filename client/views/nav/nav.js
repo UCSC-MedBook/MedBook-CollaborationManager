@@ -21,26 +21,23 @@ Template[getTemplate('nav')].helpers({
     return getTemplate('userMenu');
   },
   site_title: function(){
-    return getSetting('title');
+    return ""
   },
   logo_url: function(){
-    return getSetting('logoUrl');
+    return "";
   },
   logo_top: function(){
-    return Math.floor((70-getSetting('logoHeight'))/2);
+    return 0;
   },  
   logo_offset: function(){
-    return -Math.floor(getSetting('logoWidth')/2);
+    return 0;
   },
   intercom: function(){
-    return !!getSetting('intercomId');
+    return 0;
   },
   canPost: function(){
     return canPost(Meteor.user());
   },
-  requirePostsApproval: function(){
-    return getSetting('requirePostsApproval');
-  }
 });
 
 function fixMedBookImage() {

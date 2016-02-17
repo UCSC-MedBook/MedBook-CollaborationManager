@@ -6,25 +6,6 @@ adminNav.push({
 
 Meteor.startup(function () {
 
-  PostsSearchController = PostsListController.extend({
-    view: 'search',
-    onBeforeAction: function() {
-      if ("q" in this.params) {
-        Session.set("searchQuery", this.params.q);
-      }
-      this.next();
-    }
-  });
-
-  Router.onBeforeAction(Router._filters.isAdmin, {only: ['logs']});
-
-  // Search
-
-  Router.route('/search/:limit?', {
-    name: 'search',
-    controller: PostsSearchController    
-  });
-
   // Search Logs
 
   Router.route('/logs/:limit?', {

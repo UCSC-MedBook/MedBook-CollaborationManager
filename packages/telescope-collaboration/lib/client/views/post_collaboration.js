@@ -64,57 +64,6 @@ Meteor.startup(function () {
   window.collabNames = collabNames;
 
 
-  Template.selectCollaborators.rendered = function(postTemplate) {
-
-      var $sc = $(this.find(".selectCollaborators"));
-      $sc.select2({tags: collabNames(), width:"600px"});
-
-      var inits = [];
-      if (this.data && this.data.collaboration )
-          this.data.collaboration.map(function(v) { inits.push(v); });
-      else {
-          var cn = Session.get("collaborationName");
-          if (cn)
-              inits.push(cn);
-
-          var u = Meteor.user();
-          var em = getEmails();
-
-          if (u && em)
-              inits.push(em[0]);
-          if (u && u.profile && u.profile.defaultCollaboration && u.profile.defaultCollaboration.length > 0) 
-              inits.push( u.profile.defaultCollaboration);
-      }
-
-      if (inits.length > 0)
-          $sc.select2("data", inits.map(function(cs) { return {id: cs, text:cs}}));
-  };
-
-
-  postSubmitClientCallbacks.push(function(properties) {
-        var data =  $('.selectCollaborators').select2("data");
-        var dataIds = data.map(function(d) { return d.id });
-        for (var i = 0; i < dataIds.length; i++) {
-            var d = dataIds[i];
-            if (d.indexOf("@"))
-                continue;
-            if (Collabortion.findOne({name: d}))
-                continue;
-            var user = Meteor.users.findOne({username: d});
-            if (user) {
-                if (user.emails)
-                    dataIds[i] = user.emails && user.emails[0].address;
-                else if ( user.services && user.services.google && user.services.google.email)
-                    dataIds[i] = user.services.google.email;
-            }
-        }
-        var me = getEmails()[0];
-        if (dataIds.indexOf(me) < 0)
-            dataIds.push(me);
-
-        properties.collaboration = dataIds;
-        return properties;
-  });
   Template.addCollaboratorsPoppup.helpers({
     something: function(t) { 
        console.log("something", this);
@@ -160,7 +109,6 @@ Meteor.startup(function () {
         var newCollabs = $sc.select2("data").map(function(f){ return f.id});
         var _id = $(event.target).data("_id");
         console.log("YYY", newCollabs, _id);
-        Posts.update({_id:_id}, { $set: {collaboration: newCollabs}});
         doneEditOrAddCollaborators();
      }
   });

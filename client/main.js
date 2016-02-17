@@ -3,25 +3,3 @@ Session.set('initialLoad', true);
 Session.set('today', new Date());
 Session.set('view', 'top');
 Session.set('sessionId', Meteor.default_connection._lastSessionId);
-
-STATUS_PENDING=1;
-STATUS_APPROVED=2;
-STATUS_REJECTED=3;
-
-adminNav = adminNav.concat([
-  {
-    route: 'all-users',
-    label: 'Users'
-  },
-  {
-    route: 'settings',
-    label: 'Settings'
-  },
-]);
-
-// Sort postModules array position using modulePositions as index
-postModules = _.sortBy(postModules, function(module){return _.indexOf(modulePositions, module.position)});
-
-postHeading = _.sortBy(postHeading, 'order');
-
-postMeta = _.sortBy(postMeta, 'order');
