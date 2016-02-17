@@ -23,6 +23,7 @@ Package.onUse(function (api) {
   ], 'client');
 
   api.use([
+    'mizzao:bootstrap-3',
     'aldeed:autoform',
   ], ['client', 'server']);
 

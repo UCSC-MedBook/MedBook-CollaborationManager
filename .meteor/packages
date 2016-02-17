@@ -60,7 +60,6 @@ telescope-collaboration
 http
 aldeed:template-extension
 aldeed:autoform-select2@1.0.2
-telescope-post-files
 cfs:autoform@2.1.1
 iron:controller
 fourseven:scss
